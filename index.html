@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title id='game-title'>Frog Game</title>
+    <link rel="stylesheet" href="css/style.css"> 
+</head>
+
+<body>
+    <div id="top-bar" class="top-bar">
+        <div id="progress-bar" class="progress-bar"></div>
+        <div class="info-panel">
+            <p id="score" class="txt score"></p>
+            <p id="msg" class="txt msg"></p>
+            <p id="life" class="txt life"></p>
+            <button id="btn-menu" class="txt btn-menu btn-toggle">Game</button>
+            <ul id="menu" class="menu-list">
+            	<li id="btn-instruction" class="btn-option btn-toggle"></li>
+                <li id="btn-role" class="btn-option btn-toggle"></li>
+                <li id="btn-restart" class="btn-option btn-toggle"></li>
+            </ul>
+            <ul id="role-list" class="role-list selection-list">
+                <li class="btn-role btn-selection btn-toggle">
+                    <img src="" alt="role No.5" id="role-4" class="role-img">
+                </li>
+                <li class="btn-role btn-selection btn-toggle">
+                    <img src="" alt="role No.4" id="role-3" class="role-img">
+                </li>
+                <li class="btn-role btn-selection btn-toggle">
+                    <img src="" alt="role No.3" id="role-2" class="role-img">
+                </li>
+                <li class="btn-role btn-selection btn-toggle">
+                    <img src="" alt="role No.2" id="role-1" class="role-img">
+                </li>
+                <li class="btn-role btn-selection btn-toggle">
+                    <img src="" alt="role No.1" id="role-0" class="role-img">
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div id="instruction-board" class="popup-board">
+        <div class="board-content instruction-content">
+            <h2> Game Target</h2>
+            <p> There are four keys:up/down/left/right. Players use those buttons to move forward and avoid beetles. Every time players cross the river, there will be rewards. </p>
+            <h2> Integration Rules</h2>
+            <p> As time goes on and players score increases, beetles will get faster. Correspondingly, players get higher bouns points each time he crosses the river or gets props.</p>
+            <p> Two consecutive reaching river in a short internal time interval, bonus points will raise 1 time, the maximum can be added to 4 times times. If the river is interrupted continuously, it will be reduced to orginal reward</p>
+            <h2>Prop Function</h2>
+            <p>Rock ：Block the players' forward route</p>
+            <p>Blue Gem：Slows the beetles' speed for 5 seconds.</p>
+            <p>Orange Gem：All beetles move beyond the left side of the canvas.</p>
+            <p>Green Gem：Delete a beetle random, delete two beetles in the later of the game. If there is only one beetle left in the current canvas, it will be replaced by a medium bouns points.</p>
+            <p>Key ：Delete a rock random, and get a few points at the same time.</p>
+            <p>Heart ：Add one life，if players have five lifes, the bouns points are obtained instead.</p>
+            <p>Star ：Get a lot of bouns points</p>
+        </div>
+        <button id="btn-close-instruction" class="btn-close btn-toggle">OK</button>
+    </div>
+
+    <script src="js/dom.js"></script>
+    <script src="js/resources.js"></script>
+    <script src="js/class.js"></script>
+    <script src="js/util.js"></script>
+    <script src="js/controller.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/engine.js"></script>
+
+</body>
+</html>
