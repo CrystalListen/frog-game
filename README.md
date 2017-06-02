@@ -38,4 +38,3 @@ This requires a globally installed npm.
 * [Startup Guide](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e88_SZQKC8jNO0Dc/pun?embedded=true)
 
 
-"# frog-game" 
