@@ -150,23 +150,6 @@ var Controller = (function(global) {
         }
     };
 
-    /* Remove stones randomly, and if there are no stones in the game, return directly */
-    var removeRock = function() {
-        if (allObstacles.length === 0) {
-            return;
-        }
-
-        var randomIndex = Math.floor(Math.random() * allObstacles.length);
-
-        /* Adjust Pavement the corresponding element in the two-dimensional array is false */
-        var row = allObstacles[randomIndex].y / Board.cellHeight- 1,
-            col = allObstacles[randomIndex].x / Board.cellWidth;
-        pavement[row][col] = false;
-
-        allObstacles[randomIndex] = null;
-        allObstacles = Util.takeOutNullOrUndefined(allObstacles);
-    };
-
     /* function to restart the game */
     var restartGame = function() {
 
@@ -538,11 +521,29 @@ var Controller = (function(global) {
 
     /* When you get the key, remove a stone (if there is a stone on the screen) and get a few points */
     var obtainKey = function() {
-        removeRock();
+
+        /* Check if any obstables exist */
+        if(allObstacles.length)
+        {
+            var rockWords = 'Remove a Rock!';
+            DomManager.setMsg(rockWords);
+            /* Random removal of an obstacle */
+            var index = Math.floor(Math.random() * (allObstacles.length-1));
+            var rock = allObstacles[index];
+            var row = rock.y / Board.cellHeight,
+            col = rock.x / Board.cellWidth;
+            Controller.pavement[row][col] = false;
+            allObstacles.remove(rock);
+
+        }
+        else{
+            var rockWords = 'No Rock!';
+            DomManager.setMsg(rockWords);
+        }
+
         player.score += 20 + Math.floor(stage * 0.5);
         DomManager.updateScore();
-        var rockWords = 'Remove a Rock!';
-        DomManager.setMsg(rockWords);
+
         win.setTimeout(function() {
             DomManager.resetMsg();
         }, 1500);

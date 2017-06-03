@@ -122,13 +122,13 @@ Obstacle.prototype.initLocation = function() {
      * Get the location information on the canvas through two-dimensional variable Controller.pavement
      */
      do {
-        col = Math.floor(Math.random() * (Board.horizonCells-1))+1;
+        col = Math.floor(Math.random() * (Board.horizonCells-1));
         row = Math.floor(Math.random() * (Board.vericalCells-2))+1;
         this.x = Board.column(col);
         this.y = Board.row(row);
-      } while (Controller.pavement[row-1][col-1] || this.checkCollision(player)
+      } while (Controller.pavement[row][col] || this.checkCollision(player)
       );
-     Controller.pavement[row-1][col-1] = 'Obstacle';
+     Controller.pavement[row][col] = 'Obstacle';
 };
 
 /* The Treasure class is also a subclass of Enemy classes that 
@@ -172,13 +172,13 @@ Treasure.prototype.initLocation = function() {
      * Get the location information on the canvas through two-dimensional variable Controller.pavement
      */
     do {
-        col = Math.floor(Math.random() * (Board.horizonCells-1))+1;
+        col = Math.floor(Math.random() * (Board.horizonCells-1));
         row = Math.floor(Math.random() * (Board.vericalCells-2))+1;
         this.x = Board.column(col);
         this.y = Board.row(row);
-     } while (Controller.pavement[row-1][col-1]  || this.checkCollision(player)
+     } while (Controller.pavement[row][col] || this.checkCollision(player)
      );
-    Controller.pavement[row-1][col-1] = 'Treasure';
+    Controller.pavement[row][col] = 'Treasure';
 };
 
 /* Subclasses of Treasure classes*/
@@ -318,22 +318,22 @@ Player.prototype.checkRock = function(){
     };
 
     /*left*/
-    if((col - 2 >= 0) && (row-1 >= 0) &&(Controller.pavement[row-1][col-2] === 'Obstacle'))
+    if((col - 1 >= 0) &&(Controller.pavement[row][col-1] === 'Obstacle'))
     {
         result.left = false;
     }
     /*right*/
-    if((col  <= Board.horizonCells) && (row-1 >= 0) && (Controller.pavement[row-1][col] === 'Obstacle'))
+    if((col < Board.horizonCells-1) && (Controller.pavement[row][col+1] === 'Obstacle'))
     {
         result.right = false;
     }
     /*up*/
-    if((row-2 >= 0 ) && (Controller.pavement[row-2][col-1] === 'Obstacle'))
+    if((row-1 >= 0 ) && (Controller.pavement[row-1][col] === 'Obstacle'))
     {
         result.top = false;
     }
     /*down*/
-    if((row  <= Board.vericalCells) && (Controller.pavement[row][col-1] === 'Obstacle'))
+    if((row  < Board.vericalCells-1) && (Controller.pavement[row+1][col] === 'Obstacle'))
     {
         result.bottom = false;
     }

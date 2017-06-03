@@ -123,10 +123,6 @@ var Engine = (function(global) {
             if(treasure.checkCollision(player))
                 treasure.collisionDeal();
         });
-        allObstacles.forEach(function(obstacle) {
-            if(obstacle.checkCollision(player))
-                obstacle.collisionDeal();
-        });
     }
 
     /* This function initially draws the "game level", it will then call
