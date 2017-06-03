@@ -297,7 +297,7 @@ Player.prototype.initLocation = function() {
 Player.prototype.update = function() {};
 
 Player.prototype.render = function() {
-    ctx.drawImage(Resources.get(this.sprite), this.x-5, this.y+5,105,151);
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y+5,105,151);
 };
 
 Player.prototype.move = function(x,y){

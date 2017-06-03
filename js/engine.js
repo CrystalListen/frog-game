@@ -116,7 +116,7 @@ var Engine = (function(global) {
         });
         if(collisonHappened){
             Controller.collideWithEnemy();
-            player.initLocation();
+           // player.initLocation();
         }
 
         allTreasure.forEach(function(treasure) {
